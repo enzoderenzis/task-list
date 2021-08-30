@@ -1,0 +1,38 @@
+{
+  "name": "true-north-challenge-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Enzo",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev:server": "nodemon --inspect ./index.js --exec babel-node",
+    "build:clean": "rm -rf dist",
+    "build:init": "rm -rf node_modules",
+    "build:server": "yarn install --force && NODE_ENV=production && babel src --out-dir dist/src && babel index.js --out-dir dist",
+    "build": "yarn build:clean && yarn build:server && yarn build:init && yarn install --force --production && cp -r node_modules ./dist/node_modules"
+  },
+  "dependencies": {
+    "core-js": "^3.16.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.2",
+    "node-fetch": "^2.6.1",
+    "regenerator-runtime": "^0.13.9",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/preset-env": "^7.15.0",
+    "nodemon": "^2.0.12"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env"
+      ]
+    ]
+  }
+}
